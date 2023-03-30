@@ -25,7 +25,7 @@ public class Webmvcjpaj2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Employee em1=new Employee(null, "test1", 26);
+		Employee em1=new Employee(null, "test1", 26,"user@gmail.com","password1");
 		employeeRepository.save(em1);
 		Tache t1=new Tache(0,"visite médicale");
 		tacheRepository.save(t1);

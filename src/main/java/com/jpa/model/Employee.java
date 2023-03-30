@@ -23,5 +23,9 @@ private Long id;
 private String name;
 @Column(name = "age")
 private int age;
+@Column(nullable = false)
+private String email;
+@Column(nullable = false)
+private String password;
 
 }

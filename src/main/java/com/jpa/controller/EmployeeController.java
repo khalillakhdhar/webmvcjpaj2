@@ -1,5 +1,6 @@
 package com.jpa.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import com.jpa.repositories.EmployeeRepository;
 import jakarta.validation.Valid;
 
 import com.jpa.model.Employee;
+import com.jpa.model.EmployeeDTO;
 @RestController
 //@RequestMapping("")
 public class EmployeeController {
@@ -28,8 +30,14 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @GetMapping("employees")
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees() {
+    	List<EmployeeDTO> emps=new ArrayList<>();
+         employeeRepository.findAll().forEach(em->{
+        	 EmployeeDTO empdto=new EmployeeDTO(em.getId(), em.getName(), em.getAge(), em.getEmail());
+        	 emps.add(empdto);
+         }
+        		 );;
+    return emps;
     }
 
     @GetMapping("employees/{id}")
