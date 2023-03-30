@@ -6,7 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.jpa.model.Employee;
+import com.jpa.model.Tache;
 import com.jpa.repositories.EmployeeRepository;
+import com.jpa.repositories.TacheRepository;
 
 @SpringBootApplication
 public class Webmvcjpaj2Application implements CommandLineRunner {
@@ -14,6 +16,8 @@ public class Webmvcjpaj2Application implements CommandLineRunner {
 	@Autowired
 	//dependency injection
 	EmployeeRepository employeeRepository;
+	@Autowired
+	TacheRepository tacheRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Webmvcjpaj2Application.class, args);
@@ -23,6 +27,8 @@ public class Webmvcjpaj2Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Employee em1=new Employee(null, "test1", 26);
 		employeeRepository.save(em1);
+		Tache t1=new Tache(0,"visite médicale");
+		tacheRepository.save(t1);
 		// TODO Auto-generated method stub
 		//System.out.println("it is working");
 		/*
